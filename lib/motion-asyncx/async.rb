@@ -31,7 +31,7 @@ module Async
     end
 
     def self.do(&block)
-      chain = Chain.new
+      chain = Waterfall.new
       chain.blocks << block
       chain
     end
