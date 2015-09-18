@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
   s.name        = 'motion-asyncx'
   s.version     = '0.0.1'
@@ -9,4 +11,7 @@ Gem::Specification.new do |s|
   s.files       = ["lib/motion-asyncx.rb"]
   s.homepage    = 'http://rubygems.org/gems/async-motion'
   s.license     = 'MIT'
+
+  s.files         = Dir.glob("lib/**/*.rb")
+  s.require_paths = ["lib"]
 end

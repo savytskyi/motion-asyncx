@@ -1,9 +1,9 @@
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project'
-require 'bundler'
-
-$:.unshift("./lib/")
-require './lib/motion-asyncx'
+platform = ENV.fetch('platform', 'ios')
+require "motion/project/template/#{platform}"
+require 'bundler/gem_tasks'
+require 'bundler/setup'
+Bundler.require
 
 Motion::Project::App.setup do |app|
 end
