@@ -11,22 +11,17 @@ module Async
     def next_block(previous_result=nil)
       block = @blocks[@current]
       completion = lambda do |result=nil, error=nil|
-        kp "completion!"
         if error
           @on_error.call(result, error) if @on_error.is_a?(Proc)
         else
           @current += 1
-          kp "2-Total blocks: #{@blocks.count}, curr: #{@current}"
           if @blocks.length > @current
             next_block(result)
           elsif @on_success.is_a?(Proc)
             @on_success.call(result)
-          else
-            p "Done!"
           end
         end
       end
-      kp "Total blocks: #{@blocks.count}, curr: #{@current}"
       block.call(completion, previous_result)
     end
 
